@@ -1,0 +1,42 @@
+﻿@page
+@model AplicatieSalaDeFitness.Pages.Feedbackuri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback[0].Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback[0].Antrenor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Feedback) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Antrenor.Nume)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.FeedbackId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.FeedbackId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.FeedbackId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
